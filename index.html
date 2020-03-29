@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Baloo+2|Gotu|Open+Sans|Sen&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body class = "bodyclass">
         <header class = "headerclass"><h1>Fake ID Generator</h2></header>
@@ -51,5 +52,26 @@
             </div>
         </div>
         <footer class="footer">&copy;Copyright Maciej Giłka</footer>
+        <script>
+            
+                        
+            btn.addEventListener("click", function(){
+                
+                axios.get('http://127.0.0.1:8080') // tutaj wykonujesz request typu GET do http://127.0.0.1:8080
+                    .then(function (response) {
+                        // to wykonuje się tylko gdy request do serwera się powiedzie
+                        console.log('Dane pobrane z serwera:');
+                        console.log(response.data);
+                    })
+                    .catch(function (error) {
+                        // to wykonuje się tylko gdy request do serwera się NIE powiedzie
+                        console.log(error);
+                    })
+                    .finally(function () {
+                        // to wykonuje się zawsze, bez względu na catch/then
+                    });
+
+            })
+        </script>
     </body>
 </html>
