@@ -25,8 +25,16 @@
             <div class = "rightcontainer">
                 <div>
                     <div class = "divlabel">
-                        <label class="label" for = "fullname">Full name:</label>
-                        <input type = "text" id = "fullname" class = "input" readonly/>
+                        <label class="label" for = "Firstname">First name:</label>
+                        <input type = "text" id = "Firstname" class = "input" readonly/>
+                    </div>
+                    <div class = "divlabel">
+                        <label class="label" for = "LastName">Last name:</label>
+                        <input type = "text" id = "LastName" class = "input" readonly/>
+                    </div>
+                    <div class = "divlabel">
+                        <label class="label" for = "sex">Gender:</label>
+                        <input type = "text" id = "sex" class = "input" readonly/>
                     </div>
                     <div class = "divlabel">
                         <label class="label" for = "Residance">Place of Residance: </label>
@@ -56,10 +64,18 @@
             
                         
             btn.addEventListener("click", function(){
-                
+                const Name = document.getElementById('Firstname');
+                const LName = document.getElementById('LastName');
+                const phone = document.getElementById('Phone');
+                const Gender = document.getElementById('sex');
                 axios.get('http://127.0.0.1:8080') // tutaj wykonujesz request typu GET do http://127.0.0.1:8080
                     .then(function (response) {
                         // to wykonuje się tylko gdy request do serwera się powiedzie
+                        var IDinformation = response.data
+                        Name.value = IDinformation.firstname;
+                        LName.value = IDinformation.lastname;
+                        phone.value = IDinformation.phonenumber;
+                        Gender.value = IDinformation.gender;
                         console.log('Dane pobrane z serwera:');
                         console.log(response.data);
                     })
